@@ -3,7 +3,15 @@ import GameObject = Phaser.GameObjects.GameObject;
 import Sprite = Phaser.Physics.Arcade.Sprite;
 import Group = Phaser.Physics.Arcade.Group;
 
+//const sky = require('./assets/sky.png');
+import sky from './assets/sky.png';
+import platform from './assets/platform.png';
+import star from './assets/star.png';
+import bomb from './assets/bomb.png';
+import dude from './assets/dude.png';
+
 export default class Demo extends Phaser.Scene {
+
     private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
     private player?: Sprite;
     private score = 0;
@@ -14,15 +22,16 @@ export default class Demo extends Phaser.Scene {
 
     constructor() {
         super('demo');
+        console.log(this.score, this.gameOver);
     }
 
     public preload() {
-        this.load.image('sky', 'assets/sky.png');
-        this.load.image('ground', 'assets/platform.png');
-        this.load.image('star', 'assets/star.png');
-        this.load.image('bomb', 'assets/bomb.png');
+        this.load.image('sky', sky);
+        this.load.image('ground', platform);
+        this.load.image('star', star);
+        this.load.image('bomb', bomb);
         this.load.spritesheet('dude',
-            'assets/dude.png',
+            dude,
             {frameWidth: 32, frameHeight: 48}
         );
     }
@@ -51,7 +60,7 @@ export default class Demo extends Phaser.Scene {
 
         this.bombs = this.physics.add.group();
 
-        this.player = this.physics.add.sprite(300, 450, 'dude')
+        this.player = this.physics.add.sprite(100, 450, 'dude')
             .setBounce(0.2)
             .setCollideWorldBounds(true);
 
@@ -84,8 +93,8 @@ export default class Demo extends Phaser.Scene {
         this.physics.add.collider(this.player, platforms);
         this.physics.add.collider(this.stars, platforms);
         this.physics.add.collider(this.bombs, platforms);
-        this.physics.add.overlap(this.player, this.stars, this.collectStar);
-        this.physics.add.overlap(this.player, this.bombs, this.hitBomb);
+        this.physics.add.overlap(this.player, this.stars, this.collectStar, undefined, this);
+        this.physics.add.overlap(this.player, this.bombs, this.hitBomb, undefined, this);
 
         this.cursors = this.input.keyboard.createCursorKeys();
 

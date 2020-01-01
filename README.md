@@ -1,9 +1,14 @@
 # Phaser 3 Webpack Project Template
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/)
+A Phaser 3 project template with typescript and ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/)
 that includes hot-reloading for development and production-ready builds.
 
 Loading images via JavaScript module `import` is also supported.
+
+The template contains an adapted version of the 
+full phaser 3 tutorial game. The game has been converted
+to typescript and adapted to load the assets via
+import statements.
 
 ## Requirements
 
@@ -49,7 +54,12 @@ new configuration files and target them in specific npm tasks inside of `package
 
 ## Deploying Code
 After you run the `npm run build` command, your code will be built into a single bundle located at 
-`dist/bundle.min.js` along with any other assets you project depended. 
+`dist/bundle.min.js` along with any other assets you project depended.
+
+Please note that it only contains assets that are imported
+in any source file. See the sample `game.ts` on how
+to import the images and how to tell phaser to use
+them. 
 
 If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), 
 you should be able to open `http://mycoolserver.com/index.html` and play your game.
