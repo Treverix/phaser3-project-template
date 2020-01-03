@@ -1,9 +1,9 @@
 import 'phaser';
+import GameConfig = Phaser.Types.Core.GameConfig;
 import GameObject = Phaser.GameObjects.GameObject;
 import Sprite = Phaser.Physics.Arcade.Sprite;
 import Group = Phaser.Physics.Arcade.Group;
 
-//const sky = require('./assets/sky.png');
 import sky from './assets/sky.png';
 import platform from './assets/platform.png';
 import star from './assets/star.png';
@@ -163,11 +163,15 @@ export default class Demo extends Phaser.Scene {
     }
 }
 
-const config = {
+const config: GameConfig = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
     scene: Demo,
+    scale: {
+        mode: Phaser.Scale.FIT,
+    },
+    resolution: window.devicePixelRatio,
     physics: {
         default: 'arcade',
         arcade: {
@@ -177,4 +181,5 @@ const config = {
     }
 };
 
-const game = new Phaser.Game(config);
+// start the game
+new Phaser.Game(config);
