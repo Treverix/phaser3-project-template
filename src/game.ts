@@ -1,5 +1,4 @@
 import 'phaser';
-import GameConfig = Phaser.Types.Core.GameConfig;
 import GameObject = Phaser.GameObjects.GameObject;
 import Sprite = Phaser.Physics.Arcade.Sprite;
 import Group = Phaser.Physics.Arcade.Group;
@@ -10,7 +9,7 @@ import star from './assets/star.png';
 import bomb from './assets/bomb.png';
 import dude from './assets/dude.png';
 
-export default class Demo extends Phaser.Scene {
+export class Game extends Phaser.Scene {
 
     private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
     private player?: Sprite;
@@ -162,24 +161,3 @@ export default class Demo extends Phaser.Scene {
         this.gameOver = true;
     }
 }
-
-const config: GameConfig = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    scene: Demo,
-    scale: {
-        mode: Phaser.Scale.FIT,
-    },
-    resolution: window.devicePixelRatio,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: {y: 300},
-            debug: false
-        }
-    }
-};
-
-// start the game
-new Phaser.Game(config);

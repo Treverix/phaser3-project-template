@@ -6,9 +6,9 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   mode: "development",
   devtool: "eval-source-map",
-  entry: "./src/game.ts",
+  entry: "./src/index.ts",
   output: {
-    filename: 'game.js',
+    filename: 'index.js',
   },
   module: {
     rules: [

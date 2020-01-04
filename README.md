@@ -57,7 +57,7 @@ After you run the `npm run build` command, your code will be built into a single
 `dist/bundle.min.js` along with any other assets you project depended.
 
 Please note that it only contains assets that are imported
-in any source file. See the sample `game.ts` on how
+in any source file. See the sample `index.ts` on how
 to import the images and how to tell phaser to use
 them. 
 
